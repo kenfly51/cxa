@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoList should render initial layout 1`] = `
+Array [
+  <div
+    className="todo-list"
+  >
+    <h3>
+      To Do List
+    </h3>
+    <div
+      className="cotainer"
+    >
+      <div
+        className="search-bar"
+      >
+        <ForwardRef
+          id="search-form"
+          inline={false}
+          onSubmit={[Function]}
+        >
+          <ForwardRef
+            id="search-term"
+            placeholder="search todo"
+          />
+        </ForwardRef>
+      </div>
+      <div
+        className="empty-list"
+      >
+        I'm lonely now
+      </div>
+      <ForwardRef
+        id="to-do-form"
+        inline={false}
+        onSubmit={[Function]}
+      >
+        <ForwardRef
+          id="new-todo"
+          placeholder="Enter new todo item..."
+        />
+      </ForwardRef>
+    </div>
+  </div>,
+]
+`;

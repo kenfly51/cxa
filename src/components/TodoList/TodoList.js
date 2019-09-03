@@ -81,8 +81,8 @@ export const TodoList = () => {
 
   const renderSearchbar = () => {
     return (
-      <Form onSubmit={searchTodo}>
-        <Form.Control placeholder="search todo" />
+      <Form onSubmit={searchTodo} id="search-form">
+        <Form.Control placeholder="search todo" id="search-term" />
       </Form>
     );
   };
@@ -93,8 +93,8 @@ export const TodoList = () => {
       <div className="cotainer">
         <div className="search-bar">{renderSearchbar()}</div>
         {todos.length > 0 ? renderTodoList() : renderItemList()}
-        <Form onSubmit={addNewTodo}>
-          <Form.Control placeholder="Enter new todo item..." />
+        <Form onSubmit={addNewTodo} id="to-do-form">
+          <Form.Control placeholder="Enter new todo item..." id="new-todo" />
         </Form>
       </div>
     </div>
