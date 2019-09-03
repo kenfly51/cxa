@@ -2,8 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## TODO
 
-Add UT for search function
-Refactor this code into smaller components, such as: TodoItem, ToDoContainer, etc...
+- Add UT for search function
+- Refactor this code into smaller components, such as: TodoItem, ToDoContainer, etc...
 
 ## Available Scripts
 
