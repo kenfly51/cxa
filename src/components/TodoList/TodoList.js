@@ -6,6 +6,7 @@ import "./TodoList.scss";
 let currentId = 0;
 export const TodoList = () => {
   const [todos, updateTodoList] = useState([]);
+  const [searchTerm, updateSearchTerm] = useState("");
 
   const renderTodoItem = todo => {
     const { name, status, id } = todo;
@@ -25,19 +26,21 @@ export const TodoList = () => {
   };
 
   const renderTodoList = () => {
-    return todos.map(renderTodoItem);
+    return getFilteredTodo().map(renderTodoItem);
   };
 
   const addNewTodo = e => {
-    const todo = e.target[0].value;
+    const todo = e.target[0].value || "";
     e.preventDefault();
-    todos.push({
-      id: currentId++,
-      name: todo,
-      status: false
-    });
-    e.target[0].value = "";
-    updateTodoList([...todos]);
+    if (todo) {
+      todos.push({
+        id: currentId++,
+        name: todo.trim(),
+        status: false
+      });
+      e.target[0].value = "";
+      updateTodoList([...todos]);
+    }
   };
 
   const deleteTodo = ({ id }) => {
@@ -64,10 +67,31 @@ export const TodoList = () => {
     return <div className="empty-list">I'm lonely now</div>;
   };
 
+  const searchTodo = e => {
+    e.preventDefault();
+    const searchTerm = (e.target[0].value || "").toLowerCase().trim();
+    updateSearchTerm(searchTerm);
+  };
+
+  const getFilteredTodo = () => {
+    return todos.filter(t => {
+      return searchTerm === "" || t.name.toLowerCase().includes(searchTerm);
+    });
+  };
+
+  const renderSearchbar = () => {
+    return (
+      <Form onSubmit={searchTodo}>
+        <Form.Control placeholder="search todo" />
+      </Form>
+    );
+  };
+
   return (
     <div className="todo-list">
       <h3>To Do List</h3>
       <div className="cotainer">
+        <div className="search-bar">{renderSearchbar()}</div>
         {todos.length > 0 ? renderTodoList() : renderItemList()}
         <Form onSubmit={addNewTodo}>
           <Form.Control placeholder="Enter new todo item..." />
