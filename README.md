@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-##TODO
+## TODO
 
 Add UT for search function
 Refactor this code into smaller components, such as: TodoItem, ToDoContainer, etc...
